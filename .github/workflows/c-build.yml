@@ -29,5 +29,5 @@ jobs:
     - name: Verify
       run: |
         ls -l *.pgm
-        file mandelbrot.pgm | grep "PGM data"
+        file mandelbrot.pgm | grep "Netpbm image data"
       working-directory: fractal
