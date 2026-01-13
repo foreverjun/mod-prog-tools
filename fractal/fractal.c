@@ -8,6 +8,7 @@
 static pixel_data calculate_pixel_value(int iter)
 {
     if (iter == MAX_ITER) return 0;
+    
     return (pixel_data)(iter % 255);
 }
 
