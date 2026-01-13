@@ -1,0 +1,33 @@
+name: C build
+
+on:
+  push:
+    paths:
+      - 'fractal/**'
+  pull_request:
+    paths:
+      - 'fractal/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Compile release
+      run: make release
+      working-directory: fractal
+
+    - name: Compile rebug
+      run: make debug
+      working-directory: fractal
+
+    - name: Run
+      run: ./release
+      working-directory: fractal
+
+    - name: Verify
+      run: |
+        ls -l *.pgm
+        file mandelbrot.pgm | grep "PGM data"
+      working-directory: fractal
